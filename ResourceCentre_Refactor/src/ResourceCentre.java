@@ -1,14 +1,14 @@
 import java.util.ArrayList;
-// Gabriel
+
 public class ResourceCentre {
 
-	private static final int ITEM_TYPE_CHROMEBOOK = 2;
-	private static final int ITEM_TYPE_CAMCODER = 1;
-	private static final int OPTION_RETURN = 4;
-	private static final int OPTION_LOAN = 3;
-	private static final int OPTION_ADD = 2;
-	private static final int OPTION_VIEW = 1;
 	private static final int OPTION_QUIT = 5;
+	private static final int OPTION_VIEW = 1;
+	private static final int OPTION_ADD = 2;
+	private static final int OPTION_LOAN = 3;
+	private static final int OPTION_RETURN = 4;
+	private static final int ITEM_TYPE_CAMCODER = 1;
+	private static final int ITEM_TYPE_CHROMEBOOK = 2;
 
 
 	public static void main(String[] args) {
@@ -40,13 +40,13 @@ public class ResourceCentre {
 				
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
-				if (itemType == 1) {
+				if (itemType == ITEM_TYPE_CAMCODER) {
 					// Add a camcorder
 					Camcorder cc = inputCamcorder();
 					ResourceCentre.addCamcorder(camcorderList, cc);
 					System.out.println("Camcorder added");
 
-				} else if (itemType == 2) {
+				} else if (itemType == ITEM_TYPE_CHROMEBOOK) {
 					// Add Chromebook
 					Chromebook cb = inputChromebook();
 					ResourceCentre.addChromebook(chromebookList, cb);
@@ -63,10 +63,10 @@ public class ResourceCentre {
 				
 				int itemType = Helper.readInt("Enter option to select item type > ");
 
-				if (itemType == 1) {
+				if (itemType == ITEM_TYPE_CAMCODER) {
 					// Loan camcorder
 					ResourceCentre.loanCamcorder(camcorderList);
-				} else if (itemType == 2) {
+				} else if (itemType == ITEM_TYPE_CHROMEBOOK) {
 					// Loan Chromebook
 					ResourceCentre.loanChromebook(chromebookList);
 				} else {
@@ -99,11 +99,7 @@ public class ResourceCentre {
 
 	}
 
-	/**
-	 * 
-	 */
-	// Joanna
-	private static void itemTypeMenu() {
+	public static void itemTypeMenu() {
 		ResourceCentre.setHeader("ITEM TYPES");
 		System.out.println("1. Camcorder");
 		System.out.println("2. Chromebook");
@@ -119,7 +115,7 @@ public class ResourceCentre {
 		Helper.line(80, "-");
 
 	}
-
+	
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
@@ -143,10 +139,7 @@ public class ResourceCentre {
 
 		for (int i = 0; i < camcorderList.size(); i++) {
 
-			output += String.format("%-10s %-30s %-10s %-10s %-20d\n", camcorderList.get(i).getAssetTag(),
-					camcorderList.get(i).getDescription(), 
-					ResourceCentre.showAvailability(camcorderList.get(i).getIsAvailable()),
-					camcorderList.get(i).getDueDate(),camcorderList.get(i).getOpticalZoom());
+			output += String.format(" %-84s \n", camcorderList.get(i).toString());
 		}
 		return output;
 	}
@@ -240,7 +233,7 @@ public class ResourceCentre {
 			return false;
 		
 		for (int i = 0; i < camcorderList.size(); i++) {
-			//Louis		
+					
 			String assetTag = camcorderList.get(i).getAssetTag();
 			boolean availibility = camcorderList.get(i).getIsAvailable();
 			if (tag.equalsIgnoreCase(assetTag)				
@@ -276,9 +269,9 @@ public class ResourceCentre {
 			return false;
 		
 		for (int i = 0; i < chromebookList.size(); i++) {
-			//Louis
 			String assetTag = chromebookList.get(i).getAssetTag();
 			boolean availibility = chromebookList.get(i).getIsAvailable();
+			
 			if (tag.equalsIgnoreCase(assetTag)
 					&& availibility == true) {
 				
@@ -313,9 +306,9 @@ public class ResourceCentre {
 			return false;
 		
 		for (int i = 0; i < camcorderList.size(); i++) {
-			//Louis
 			String assetTag = camcorderList.get(i).getAssetTag();
 			boolean availibility = camcorderList.get(i).getIsAvailable();
+			
 			if (tag.equalsIgnoreCase(assetTag)
 					&& availibility == false) {
 				camcorderList.get(i).setIsAvailable(true);
@@ -347,9 +340,9 @@ public class ResourceCentre {
 			return false;
 		
 		for (int i = 0; i < chromebookList.size(); i++) {
-			//Louis
 			String assetTag = chromebookList.get(i).getAssetTag();
 			boolean availibility = chromebookList.get(i).getIsAvailable();
+			
 			if (tag.equalsIgnoreCase(assetTag)
 					&& availibility == false) {
 				chromebookList.get(i).setIsAvailable(true);
