@@ -102,6 +102,7 @@ public class ResourceCentre {
 	/**
 	 * 
 	 */
+	// Joanna
 	private static void itemTypeMenu() {
 		ResourceCentre.setHeader("ITEM TYPES");
 		System.out.println("1. Camcorder");
@@ -118,7 +119,7 @@ public class ResourceCentre {
 		Helper.line(80, "-");
 
 	}
-	
+
 	public static void setHeader(String header) {
 		Helper.line(80, "-");
 		System.out.println(header);
